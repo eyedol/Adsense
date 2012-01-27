@@ -88,11 +88,8 @@ class adsense {
     public function _place_adsense()
     {
         $ad_settings = ORM::factory('adsense_settings',1);
-        $ad_sizes = Kohana::config('adsense.ad_sizes');
-        $size = $ad_sizes[$ad_settings->ad_size];
-        $sizes = explode('-', $size);
-        $w_h = explode('x',$sizes[0]);
-
+        $size = $ad_settings->ad_size;
+        $w_h = explode('x',$size);
         $ui_features ="rc:0";
         if ($ad_settings->ad_border == 'rounded') 
         {
@@ -105,7 +102,7 @@ class adsense {
         google_ad_width = '.$w_h[0].';
         google_ad_height = '.$w_h[1].';
         google_ad_type = "'.$ad_settings->ad_type.'";
-        google_ad_format = "'.$w_h.'_as";
+        google_ad_format = "'.$size.'_as";
         google_ad_channel ="'.$ad_settings->ad_channel.'";
         google_color_border = "'.$ad_settings->ad_border_color.'";
         google_color_link = "'.$ad_settings->ad_link_color.'";

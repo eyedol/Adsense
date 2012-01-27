@@ -34,7 +34,7 @@ class Adsense_Install {
             `ad_border` varchar(15) DEFAULT NULL,
             `ad_pub_id` varchar(25) NOT NULL,
             `ad_channel` varchar(25) DEFAULT NULL,
-            `ad_size` int(11) NOT NULL,
+            `ad_size` varchar(15) NOT NULL,
             `ad_type` varchar(25) DEFAULT NULL,
             `ad_placement` int(11) NOT NULL,
             `ad_border_color` varchar(15) DEFAULT NULL,
