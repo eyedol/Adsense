@@ -30,18 +30,18 @@ class Adsense_Install {
             CREATE TABLE IF NOT EXISTS `".
             Kohana::config('database.default.table_prefix').
             "adsense_settings` (
-            `id` int(11) NOT NULL AUTO_INCREMENT,
-            `ad_border` int(11) NOT NULL,
-            `ad_pub_id` VARCHAR(25) NOT NULL,
-            `ad_channel` VARCHAR(25) NOT NULL,
+            `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+            `ad_border` varchar(15) DEFAULT NULL,
+            `ad_pub_id` varchar(25) NOT NULL,
+            `ad_channel` varchar(25) DEFAULT NULL,
             `ad_size` int(11) NOT NULL,
-            `ad_type` int(11) NOT NULL,
+            `ad_type` varchar(25) DEFAULT NULL,
             `ad_placement` int(11) NOT NULL,
-            `ad_border_color` varchar(15) NOT NULL DEFAULT 'FFFFFF',
-            `ad_text_color` varchar(15) NOT NULL DEFAULT '000000',
-            `ad_bg_color` varchar(15) NOT NULL DEFAULT 'FFFFFF',
-            `ad_link_color` varchar(15) NOT NULL DEFAULT '0000FF',
-            `ad_uri_color` varchar(15) NOT NULL DEFAULT '008000',
+            `ad_border_color` varchar(15) DEFAULT NULL,
+            `ad_text_color` varchar(15) DEFAULT NULL,
+            `ad_bg_color` varchar(15) DEFAULT NULL,
+            `ad_link_color` varchar(15) DEFAULT NULL,
+            `ad_uri_color` varchar(15) DEFAULT NULL,
             PRIMARY KEY (`id`)
             ) ENGINE=MyISAM;
     
