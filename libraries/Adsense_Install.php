@@ -26,6 +26,7 @@ class Adsense_Install {
      */
     public function run_install()
     {
+        //create table
         $this->db->query("
             CREATE TABLE IF NOT EXISTS `".
             Kohana::config('database.default.table_prefix').
@@ -45,6 +46,18 @@ class Adsense_Install {
             PRIMARY KEY (`id`)
             ) ENGINE=MyISAM;
     
+        ");
+
+        //populate with default values
+        $this->db->query("INSERT INTO `".
+            Kohana::config('database.default.table_prefix').
+            "adsense_settings` (
+            `id`, `ad_border`, `ad_pub_id`, `ad_channel`, `ad_size`, `ad_type`,
+            `ad_placement`, `ad_border_color`, `ad_text_color`, `ad_bg_color`, 
+            `ad_link_color`, `ad_uri_color`) VALUES
+            
+            (1, 'normal', 'pub-8000059949316601', '', '300x250', 'text', 2, 
+            'f0f0f0', '000000', 'f0f0f0', '426cb7', '426cb7');
         ");
     }
 
