@@ -14,10 +14,13 @@
  */
 
 class Adsense_Install {
-    
+
+    private $table;
     //load the default database library
     public function __construct()
     {
+        $this->table = Kohana::config('database.default.table_prefix').
+            "adsense_settings";
         $this->db = Database::instance();
     }
 
@@ -28,9 +31,7 @@ class Adsense_Install {
     {
         //create table
         $this->db->query("
-            CREATE TABLE IF NOT EXISTS `".
-            Kohana::config('database.default.table_prefix').
-            "adsense_settings` (
+            CREATE TABLE IF NOT EXISTS `".$this->table."` (
             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
             `ad_border` varchar(15) DEFAULT NULL,
             `ad_pub_id` varchar(25) NOT NULL,
@@ -48,17 +49,19 @@ class Adsense_Install {
     
         ");
 
-        //populate with default values
-        $this->db->query("INSERT INTO `".
-            Kohana::config('database.default.table_prefix').
-            "adsense_settings` (
-            `id`, `ad_border`, `ad_pub_id`, `ad_channel`, `ad_size`, `ad_type`,
-            `ad_placement`, `ad_border_color`, `ad_text_color`, `ad_bg_color`, 
-            `ad_link_color`, `ad_uri_color`) VALUES
+        if ($this->db->count_records($this->table) == 0) {
+            //populate with default values
+            $this->db->query("INSERT INTO `".$this->table."` (
+                `id`, `ad_border`, `ad_pub_id`, `ad_channel`, `ad_size`,
+                `ad_type`,
+                `ad_placement`, `ad_border_color`, `ad_text_color`,
+                `ad_bg_color`, 
+                `ad_link_color`, `ad_uri_color`) VALUES
             
-            (1, 'normal', 'pub-8000059949316601', '', '300x250', 'text', 2, 
-            'f0f0f0', '000000', 'f0f0f0', '426cb7', '426cb7');
-        ");
+                (1, 'normal', 'pub-8000059949316601', '', '300x250', 'text', 2, 
+                'f0f0f0', '000000', 'f0f0f0', '426cb7', '426cb7');
+            ");
+        }
     }
 
     /**
@@ -66,6 +69,6 @@ class Adsense_Install {
      */
     public function uninstall()
     {
-        $this->db->query('DROP TABLE `'.Kohana::config('database.default.table_prefix').'adsense_settings`');
+        $this->db->query("DROP TABLE `".$this->table."`");
     }
 }
