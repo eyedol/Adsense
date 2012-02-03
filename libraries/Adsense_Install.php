@@ -58,7 +58,7 @@ class Adsense_Install {
                 `ad_bg_color`, 
                 `ad_link_color`, `ad_uri_color`) VALUES
             
-                (1, 'normal', 'pub-8000059949316601', '', '300x250', 'text', 2, 
+                (1, 'normal', 'pub-0000000000000000', '', '300x250', 'text', 2, 
                 'f0f0f0', '000000', 'f0f0f0', '426cb7', '426cb7');
             ");
         }
