@@ -35,17 +35,9 @@ class Adsense_Settings_Controller extends Admin_Controller {
         $form = array
         (
             'adsense_pub_id' => '',
-            'adsense_custom_channel' => '',
-            'adsense_border' => 0,
+            'adsense_ad_slot' => '',
             'adsense_size' => 0,
-            'adsense_bg_color' => '',
-            'adsense_border_color' => '',
-            'adsense_bg_color' => '',
-            'adsense_text_color' => '',
-            'adsense_link_color' => '',
-            'adsense_uri_color' => '',
             'adsense_ad_placement' => 0,
-            'adsense_ad_type' => 0,
         );
 
         $errors = $form;
@@ -62,27 +54,22 @@ class Adsense_Settings_Controller extends Admin_Controller {
 
             //add validation rules
             $post->add_rules('adsense_pub_id', 'required');
+            $post->add_rules('adsense_ad_slot', 'required');
             
             //passed validation test.
             if($post->validate())
             {
-                //everything is okay!
-                $form = arr::overwrite($form,$post->as_array());
                 $adsense_settings = ORM::factory('adsense_settings',1);
                 $adsense_settings->ad_pub_id = $post->adsense_pub_id;
-                $adsense_settings->ad_channel = $post->adsense_custom_channel;
+                $adsense_settings->ad_slot = $post->adsense_ad_slot;
                 $adsense_settings->ad_size = $post->adsense_size;
-                $adsense_settings->ad_border = $post->adsense_border;
-                $adsense_settings->ad_border_color = $post->adsense_border_color;
-                $adsense_settings->ad_bg_color = $post->adsense_bg_color;
-                $adsense_settings->ad_link_color = $post->adsense_link_color;
-                $adsense_settings->ad_text_color = $post->adsense_text_color;
-                $adsense_settings->ad_uri_color = $post->adsense_uri_color;
                 $adsense_settings->ad_placement = $post->adsense_ad_placement;
-                $adsense_settings->ad_type = $post->adsense_ad_type;
 
                 //save new record
                 $adsense_settings->save();
+                //everything is okay!
+                $form = arr::overwrite($form,$post->as_array());
+                $form_saved = TRUE;
             }
             else
             {
@@ -100,20 +87,11 @@ class Adsense_Settings_Controller extends Admin_Controller {
             // retrieve current settings.
             $adsense_settings = ORM::factory('adsense_settings',1);
             $form['adsense_pub_id'] = $adsense_settings->ad_pub_id;
-            $form['adsense_custom_channel'] = $adsense_settings->ad_channel;
-            $form['adsense_border'] = $adsense_settings->ad_border;
+            $form['adsense_ad_slot'] = $adsense_settings->ad_slot;
             $form['adsense_size'] = $adsense_settings->ad_size;
-            $form['adsense_border_color'] = $adsense_settings->ad_border_color;
-            $form['adsense_bg_color'] = $adsense_settings->ad_bg_color;
-            $form['adsense_link_color'] = $adsense_settings->ad_link_color;
-            $form['adsense_text_color'] = $adsense_settings->ad_text_color;
-            $form['adsense_uri_color'] = $adsense_settings->ad_uri_color;
             $form['adsense_ad_placement'] = $adsense_settings->ad_placement;
-            $form['adsense_ad_type'] = $adsense_settings->ad_type;
         }
         //enable color picker javascript library
-        $this->template->colorpicker_enabled = TRUE;
-        $this->template->js = new View('admin/adsense_settings_js');
         $this->template->content->settings_form->ad_sizes = Kohana::config('adsense.ad_sizes');
         $this->template->content->settings_form->form = $form;
         $this->template->content->settings_form->errors = $errors;

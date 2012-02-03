@@ -3,26 +3,13 @@
     (
         'settings' => 'Adsense Settings',
         'id' => 'Adsense Publisher ID',
-        'id_tip' => 'To display ads from Google Adsense it\'s required to enter your Adsense Publisher ID. Your ID can be found in your Adsense panel on the \'Home\' tab and in the sidebar \'Account Settings\'.',
-        'custom_channel' => 'Custom Channels (Optional)',
-        'custom_channel_tip' => 'Allows you to define groups of ads for better tracking.',
         'google_adsense' => 'Google Adsense',
-        'display_settings' => 'Display Settings',
+        'id_tip' => 'To display ads from Google Adsense it\'s required to enter your Adsense Publisher ID. Your ID can be found in your Adsense panel on the \'Home\' tab and in the sidebar \'Account Settings\'.',
+        'ad_slot' => 'Ad Slot ID',
+        'ad_slot_tip' => 'Your google adsense slot ID',
+        'ad_slot_desc' => 'You can find the ad slot ID at your Google adsense manager. Go to <a href="https://www.google.com/adsense">https://www.google.com/adsense/</a>. Then go to \'My ads\' -> ID. Eg. 7543616762 ',
         'ad_placement' => 'Ad Placement',
-        'ad_type' => 'Ad Type',
-        'colors' => 'Colors',
         'ad_size' => 'Ad Size',
-        'ad_border' => 'Border',
-        'border_color' => 'Border Color',
-        'background_color' => 'Background Color',
-        'link_color' => 'Link Color',
-        'text_color' => 'Text Color',
-        'uri_color' => 'Uri Color',
-        'normal' => 'Normal',
-        'rounded' => 'Rounded',
-        'type_image' => 'Image',
-        'type_text' => 'Text',
-        'type_text_image' => 'Text & Image',
         'placement_header' => 'Main Header',
         'placement_sidebar' => 'Main Sidebar',
         'placement_footer' => 'Main Footer',
@@ -45,5 +32,11 @@
         'ad_size_vertical_large' => '180 x 90 - Vertical Large',
         'ad_size_vertical_medium' => '160 x 90 - Vertical Medium',
         'ad_size_vertical_small' => '120 x 90 - Vertical Small',
+        'adsense_ad_slot' => array(
+            'required' => 'The Slot ID is required'
+        ),
+        'adsense_pub_id' => array(
+            'required' => 'The Pub ID is required'
+        )
     );
 ?>

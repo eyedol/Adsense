@@ -41,22 +41,13 @@
         </div>
         <span>Eg: pub-4268725654361605</span>
         <div class="row">
-            <h4><a href="#" class="tooltip" title="<?php echo Kohana::lang('adsense.custom_channel_tip');?>">
-            <?php echo Kohana::lang('adsense.custom_channel')?></a>
+            <h4><a href="#" class="tooltip" title="<?php echo Kohana::lang('adsense.ad_slot_tip');?>">
+            <?php echo Kohana::lang('adsense.ad_slot')?></a>
             </h4>
-            <?php print form::input('adsense_custom_channel',
-                $form['adsense_custom_channel']);?>
+            <?php print form::input('adsense_ad_slot',
+                $form['adsense_ad_slot']);?>
         </div>
-    </p>
-    <p class="display-settings">
-        <h3><?php echo Kohana::lang('adsense.display_settings');?></h3>
-        <div class="row">
-            <h4><?php echo Kohana::lang('adsense.ad_border') ?></a>
-            </h4>
-            <?php print form::dropdown('adsense_border',
-                array('normal' => Kohana::lang('adsense.normal'),
-            'rounded'=>Kohana::lang('adsense.rounded')),$form['adsense_border']);?>
-        </div>
+        <span><?php echo Kohana::lang('adsense.ad_slot_desc') ?></span>
         <div class="row">
             <h4>
             <?php echo Kohana::lang('adsense.ad_size')?>
@@ -64,36 +55,7 @@
             <?php print form::dropdown('adsense_size',
                 $ad_sizes,$form['adsense_size']);?>
         </div>
-        <div class="row">
-            <h4>
-            <?php echo Kohana::lang('adsense.border_color')?>
-            </h4>
-            <?php print form::input('adsense_border_color',$form['adsense_border_color']);?>
-        </div>
-        <div class="row">
-            <h4>
-            <?php echo Kohana::lang('adsense.background_color')?>
-            </h4>
-            <?php print form::input('adsense_bg_color',$form['adsense_bg_color']);?>
-        </div>
-        <div class="row">
-            <h4>
-            <?php echo Kohana::lang('adsense.link_color')?>
-            </h4>
-            <?php print form::input('adsense_link_color',$form['adsense_link_color']);?>
-        </div>
-        <div class="row">
-            <h4>
-            <?php echo Kohana::lang('adsense.text_color')?>
-            </h4>
-            <?php print form::input('adsense_text_color',$form['adsense_text_color']);?>
-        </div>
-        <div class="row">
-            <h4>
-            <?php echo Kohana::lang('adsense.uri_color')?>
-            </h4>
-            <?php print form::input('adsense_uri_color',$form['adsense_uri_color']);?>
-        </div>
+
         <div class="row">
             <h4>
             <?php echo Kohana::lang('adsense.ad_placement')?>
@@ -104,13 +66,5 @@
             '3' => Kohana::lang('adsense.placement_footer'),
             '4'=> Kohana::lang('adsense.placement_in_report')),$form['adsense_ad_placement']);?>
         </div>
-
-        <div class="row">
-            <h4>
-            <?php echo Kohana::lang('adsense.ad_type')?>
-            </h4>
-            <?php print form::dropdown('adsense_ad_type',
-            Kohana::config('adsense.ad_type'),$form['adsense_ad_type']);?>
-        </div>
     </p>
-    </div>
+</div>

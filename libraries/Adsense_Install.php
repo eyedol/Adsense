@@ -33,18 +33,11 @@ class Adsense_Install {
         $this->db->query("
             CREATE TABLE IF NOT EXISTS `".$this->table."` (
             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-            `ad_border` varchar(15) DEFAULT NULL,
             `ad_pub_id` varchar(25) NOT NULL,
-            `ad_channel` varchar(25) DEFAULT NULL,
+            `ad_slot` varchar(25) DEFAULT NULL,
             `ad_size` varchar(15) NOT NULL,
-            `ad_type` varchar(25) DEFAULT NULL,
             `ad_placement` int(11) NOT NULL,
-            `ad_border_color` varchar(15) DEFAULT NULL,
-            `ad_text_color` varchar(15) DEFAULT NULL,
-            `ad_bg_color` varchar(15) DEFAULT NULL,
-            `ad_link_color` varchar(15) DEFAULT NULL,
-            `ad_uri_color` varchar(15) DEFAULT NULL,
-            PRIMARY KEY (`id`)
+             PRIMARY KEY (`id`)
             ) ENGINE=MyISAM;
     
         ");
@@ -52,14 +45,9 @@ class Adsense_Install {
         if ($this->db->count_records($this->table) == 0) {
             //populate with default values
             $this->db->query("INSERT INTO `".$this->table."` (
-                `id`, `ad_border`, `ad_pub_id`, `ad_channel`, `ad_size`,
-                `ad_type`,
-                `ad_placement`, `ad_border_color`, `ad_text_color`,
-                `ad_bg_color`, 
-                `ad_link_color`, `ad_uri_color`) VALUES
-            
-                (1, 'normal', 'pub-0000000000000000', '', '300x250', 'text', 2, 
-                'f0f0f0', '000000', 'f0f0f0', '426cb7', '426cb7');
+                `id`,`ad_pub_id`, `ad_slot`, `ad_size`,
+                `ad_placement`) VALUES
+                (1, 'pub-0000000000000000', '7543616762', '300x250',2);
             ");
         }
     }
