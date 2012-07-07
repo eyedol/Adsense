@@ -24,7 +24,7 @@ class Adsense_Settings_Controller extends Admin_Controller {
 
     public function index()
     {
-        $this->template->content = new View('admin/plugins_settings');
+        $this->template->content = new View('admin/addons/plugin_settings');
         $this->template->content->title = Kohana::lang('adsense.settings');
         
         //Settings Form view
